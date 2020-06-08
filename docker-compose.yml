@@ -12,8 +12,9 @@ services:
       context: "./api"
       dockerfile: "Dockerfile.dev"
     volumes:
-      - /app/node_modules
-      - ./api:/app
+      - ./api/src:/app/src
+    environment:
+      - MONGO_URI="mongodb://mongo:27017"
   mongo:
     image: "mongo:latest"
     ports:
