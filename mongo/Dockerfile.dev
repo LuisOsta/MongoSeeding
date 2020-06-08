@@ -1,0 +1,13 @@
+FROM node:10-alpine as generator
+WORKDIR /data
+COPY . .
+RUN npm install
+# Run data generation script
+
+
+FROM mongo:latest
+
+COPY . .
+COPY --from=generator ./data/ .
+
+CMD ./init.sh
