@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("./models/User");
-const User = mongoose.model("user");
+const Employee = mongoose.model("employee");
 const PORT = 8080 || process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI || "";
 const app = express();
 
 app.get("/employees", async (req, res) => {
-  const employees = await User.find();
+  const employees = await Employee.find();
   console.log("Employees: ", employees);
   res.status(200).send({ employees });
 });

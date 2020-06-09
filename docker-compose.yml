@@ -19,6 +19,12 @@ services:
     image: "mongo:latest"
     ports:
       - "27017:27017"
+  dbseed:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile.dev
+    links:
+      - mongo
   nginx:
     restart: always
     depends_on:
