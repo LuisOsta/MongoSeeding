@@ -15,16 +15,6 @@ services:
       - ./api/src:/app/src
     environment:
       - MONGO_URI="mongodb://mongo:27017"
-  mongo:
-    image: "mongo:latest"
-    ports:
-      - "27017:27017"
-  dbseed:
-    build:
-      context: ./mongo
-      dockerfile: Dockerfile.dev
-    links:
-      - mongo
   nginx:
     restart: always
     depends_on:
@@ -35,3 +25,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3050:80"
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+  dbseed:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile.dev
+    links:
+      - mongo
