@@ -1,13 +1,15 @@
 const faker = require("faker");
+const localuser = require("../localuser.json");
 const generateEmployees = (amount) => {
   let employees = [];
   for (x = 0; x < amount; x++) {
     employees.push(createEmployee());
   }
+  employees.push(createEmployee(localuser));
   return employees;
 };
 
-const createEmployee = () => {
+const createEmployee = (user) => {
   const companyDepartments = [
     "Marketing",
     "Finance",
@@ -22,8 +24,9 @@ const createEmployee = () => {
     title: faker.name.jobTitle(),
     department: employeeDepartment,
     joined: faker.date.past(),
+    ...user,
   };
-
+  console.log(user);
   return employee;
 };
 
