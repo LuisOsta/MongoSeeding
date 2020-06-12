@@ -26,7 +26,6 @@ const createEmployee = (user) => {
     joined: faker.date.past(),
     ...user,
   };
-  console.log(user);
   return employee;
 };
 
