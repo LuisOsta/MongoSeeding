@@ -17,7 +17,6 @@ const createEmployee = () => {
   ];
   const employeeDepartment =
     companyDepartments[Math.floor(Math.random() * companyDepartments.length)];
-  console.log(employeeDepartment);
   const employee = {
     name: faker.name.findName(),
     title: faker.name.jobTitle(),
